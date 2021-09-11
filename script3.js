@@ -16,14 +16,13 @@ function AjaxCall(city){
         //document.getElementById("box").innerHTML =weather.sys.country;
         document.getElementById("box").innerHTML =`<h3>${weather.name}</h3>
         <h2>${Math.round(weather.main.temp- x)}&deg;c</h2>
-        <h5>max-${Math.round(weather.main.temp_max - x)}&deg;c / min-${Math.round(weather.main.temp_min - x)}&deg;c</h5>
+        <h5>max-${Math.ceil(weather.main.temp_max - x)}&deg;c / min-${Math.floor(weather.main.temp_min - x)}&deg;c</h5>
         <p>weather description :${weather.weather[0].description}</p>`;
         }
     }
 }
-var data1 =[]
 function AjaxCall1(country){
-var business = "own";
+var business = "business";
 var key = "45fb8d1e6ab94c37b0f23afffb884a69";
 var url = `https://newsapi.org/v2/top-headlines?country=
 ${country}&category=${business}&apiKey=${key}`;
@@ -34,9 +33,21 @@ http.onreadystatechange = function(){
 
     if(this.readyState == 4 && this.status ==200){
         console.log(JSON.parse(this.response));
-        news = JSON.parse(this.response)
-
-        //document.getElementById("").innerhtml = ``
+        var result = JSON.parse(this.response)
+        BindNews(result.articles)
     }
 }
+}
+
+function BindNews(news){
+    var temp = ``
+    news.forEach((n,i) => {
+       temp +=`<div id="newsbox">`
+       temp += `<div id="news-title">Title:${n.title==null?'No title':n.title}</div>`
+       temp += `<div id="news-author">Author:${n.author==null?'No author':n.author}</div>`
+       temp += `<div id="news-content">Content:${n.content==null?'No content':n.content}</div>`
+       temp += `<div id="news-description">Description:${n.description==null?'No description':n.description}</div></div>`
+       temp += `<div id="news-img"><img src="${n.urlToImage}"/></div></div>`
+    });
+    document.getElementById("news1").innerHTML = temp;
 }

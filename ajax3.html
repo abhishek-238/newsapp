@@ -9,40 +9,44 @@
         #box{
     width: 200px;
     height: 200px;
-    left: 20px;
     background-color:#fff;
     background-image: url("wheather/bgpic");
-    border: 5px solid blue;
-    position: relative;
-    left:0;
+    border: 5px solid black;
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
     float: left;
+    border-radius: 5px;
 }
 body{
-    width: 100%;
+    width: 100vw;
    
 }
 #box1{
-    top:0;
-    width: 550px;
-    height: 50px;
-    left: 20px;
+    width: 60%;
+    height: 10vh;
     background-color: #fff;
     float: left;
     border: 5px solid blue;
-    position: relative;
-    left:0;
+    position: absolute;
+    left: 250px;
+    top:0;
+    border-radius: 10px;
     box-sizing: border-box;
 }
 #box2{
-    top:0;
-    width: 550px;
-    height: 150px;
-    left: 20px;
+    top: 90px;
+    width: 60%;
+    height: 10vh;
     background-color: #fff;
-    float: left;
     border: 5px solid blue;
-    position: relative;
-    left:0;
+    position: absolute;
+    left: 250px;
+    top: 70px;
+    border-radius: 10px;
+    box-sizing: border-box;
 }
 #parent{
     top: 0;
@@ -51,14 +55,40 @@ body{
     width: 100vw;
     height:100vh;
     background-color:blue;
+    display: flex;
+    justify-content: center;
 }
-#inputbox{
+#inputbox,#inputbox1{
     margin: 0%;
-    width: 100%;
+    width: 18%;
     box-sizing: border-box;
 }
 h2,h3,h5,p{
     text-align: center;
+}
+#news1{
+    width: auto;
+    height: auto;
+    left:55px;
+    background-color:#fff;
+    
+    position: absolute;
+    right: 200px;
+    top: 35vh;
+    
+}
+#newsbox{
+  border: 2px solid orange;
+  box-shadow: 4px 4px 4px lightpink;
+  margin-bottom: 13px;
+  padding: 6px;
+}
+#news-title{
+    font-size:larger;
+    color: maroon;
+}
+#newsbox div{
+    margin-top: 3px ;
 }
     </style>
 </head>
@@ -68,14 +98,15 @@ h2,h3,h5,p{
     <div id="box"></div>
 
     <div id="box1"><input type="text" id="inputbox" placeholder=
-        "Enter the city name..." onblur="AjaxCall(this.value)"><br>
-
+        "Enter city name..." onblur="AjaxCall(this.value)"><br>
         <a href="https://www.facebook.com">Go to facebook!</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="https://www.gmail.com">Mail</a>
        </div>
 
-    <div id="box2"><input type="text" id="inputbox" placeholder=
-        "Enter the country name..." onblur="AjaxCall1(this.value)"></div>
+    <div id="box2"><input type="text" id="inputbox1" placeholder=
+        "Enter country name..." onblur="AjaxCall1(this.value)"></div>
+        <br><br><br>
+        <div id="news1"></div>
 
     <script src="script3.js"></script>
 </div>
